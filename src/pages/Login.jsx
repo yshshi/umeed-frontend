@@ -36,13 +36,13 @@ export default function Login() {
 
               {/* Logo */}
               <img
-                 src="./logo.jpeg"
+                 src="../../images/logo.jpeg"
                 alt="Umeed Logo"
                 className="w-10 h-10 object-contain"
               />
               <div className="flex flex-col">
                 <h1 className="text-xl font-bold text-primary-700 leading-none">
-                  UMMED
+                  UMEED
                 </h1>
               </div>
 
@@ -56,7 +56,7 @@ export default function Login() {
                 type="text"
                 value={memberId}
                 onChange={(e) => setMemberId(e.target.value)}
-                placeholder="e.g. NM10001"
+                placeholder="e.g. UM10001"
                 className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition"
                 autoComplete="username"
               />

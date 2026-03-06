@@ -3,6 +3,7 @@ import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { formatDate, formatCurrency } from '../utils/formatters';
 
 export default function Profile() {
   const { user, refreshUser } = useAuth();
@@ -157,6 +158,48 @@ export default function Profile() {
                 value={form.familyDetails.dob ? form.familyDetails.dob.slice(0, 10) : ''}
                 onChange={(e) => handleChange('familyDetails', 'dob', e.target.value || null)}
                 className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary-500 outline-none"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-soft border border-slate-200/80 p-6">
+          <h2 className="text-lg font-semibold text-slate-800 mb-4">Deposit & Amount (read-only)</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1">Latest Deposit Date</label>
+              <input
+                type="text"
+                value={user.latestDepositDate ? formatDate(user.latestDepositDate) : '—'}
+                readOnly
+                className="w-full px-4 py-2 rounded-lg border border-slate-200 bg-slate-50 text-slate-700"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1">Latest Deposit Amount</label>
+              <input
+                type="text"
+                value={formatCurrency(user.latestDepositAmount)}
+                readOnly
+                className="w-full px-4 py-2 rounded-lg border border-slate-200 bg-slate-50 text-slate-700"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1">Total Deposit</label>
+              <input
+                type="text"
+                value={formatCurrency(user.totalDeposit)}
+                readOnly
+                className="w-full px-4 py-2 rounded-lg border border-slate-200 bg-slate-50 text-slate-700"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1">Total Amount (updated by admin)</label>
+              <input
+                type="text"
+                value={formatCurrency(user.totalAmount)}
+                readOnly
+                className="w-full px-4 py-2 rounded-lg border border-slate-200 bg-slate-50 text-slate-700"
               />
             </div>
           </div>

@@ -54,7 +54,7 @@ export default function Dashboard() {
         </div>
         <div className="bg-white rounded-xl shadow-soft border border-slate-200/80 p-5 hover:shadow-md transition">
           <p className="text-sm text-slate-500">Level</p>
-          <p className="text-lg font-semibold text-slate-800 mt-1">{user?.level}</p>
+          <p className="text-lg font-semibold text-slate-800 mt-1">1</p>
         </div>
         <div className="bg-white rounded-xl shadow-soft border border-slate-200/80 p-5 hover:shadow-md transition">
           <p className="text-sm text-slate-500">Registration Date</p>

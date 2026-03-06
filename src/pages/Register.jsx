@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 
-const BUSINESS_TYPES = ['Beautician Training', 'Kutir Udhyog', 'Loan Assistance', 'Insurance Awareness', 'Marketing Support', 'Ayurved Focus','Real Estate Guidance','Hospital Support','Tour & Travel','Government Schemes'];
+import { BUSINESS_TYPES, BUSINESS_TYPE_SELECTABLE } from '../utils/constants';
 
 export default function Register() {
   const [searchParams] = useSearchParams();
@@ -13,7 +13,7 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [mobile, setMobile] = useState('');
   const [password, setPassword] = useState('');
-  const [businessType, setBusinessType] = useState(BUSINESS_TYPES[0]);
+  const [businessType, setBusinessType] = useState(BUSINESS_TYPE_SELECTABLE);
   const [loading, setLoading] = useState(false);
   const { register } = useAuth();
   const { addToast } = useToast();
@@ -55,7 +55,7 @@ export default function Register() {
       <div className="w-full max-w-md">
         <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-soft border border-slate-200/80 p-8">
           <h1 className="text-2xl font-bold text-primary-800 text-center mb-2">Create Account</h1>
-          <p className="text-slate-600 text-center text-sm mb-6">Join Ummed</p>
+          <p className="text-slate-600 text-center text-sm mb-6">Join Umeed</p>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1">Referral Code (optional)</label>
@@ -63,7 +63,7 @@ export default function Register() {
                 type="text"
                 value={referralCode}
                 onChange={(e) => setReferralCode(e.target.value)}
-                placeholder="e.g. NM10001"
+                placeholder="e.g. UM10001"
                 className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition"
               />
             </div>
@@ -104,11 +104,11 @@ export default function Register() {
               <label className="block text-sm font-medium text-slate-700 mb-1">Business Type *</label>
               <select
                 value={businessType}
-                onChange={(e) => setBusinessType(e.target.value)}
+                onChange={(e) => e.target.value === BUSINESS_TYPE_SELECTABLE && setBusinessType(e.target.value)}
                 className="w-full min-h-[48px] px-4 py-3 text-base rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition bg-white touch-manipulation"
               >
                 {BUSINESS_TYPES.map((t) => (
-                  <option key={t} value={t}>{t}</option>
+                  <option key={t} value={t} disabled={t !== BUSINESS_TYPE_SELECTABLE}>{t}</option>
                 ))}
               </select>
             </div>

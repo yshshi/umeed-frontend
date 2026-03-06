@@ -42,7 +42,7 @@ export default function DashboardLayout() {
 
               {/* Logo */}
               <img
-                 src="./logo.jpeg"
+                 src="../../images/logo.jpeg"
                 alt="Umeed Logo"
                 className="w-10 h-10 object-contain"
               />
@@ -50,7 +50,7 @@ export default function DashboardLayout() {
               {/* Text Section */}
               <div className="flex flex-col">
                 <h1 className="text-xl font-bold text-primary-700 leading-none">
-                  Ummed
+                  Umeed
                 </h1>
                 <p className="text-xs text-slate-500 mt-1">
                   {user?.memberId}
