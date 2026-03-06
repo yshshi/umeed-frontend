@@ -36,7 +36,7 @@ export default function Login() {
 
               {/* Logo */}
               <img
-                 src="../../images/logo.jpeg"
+                 src="./logo.jpeg"
                 alt="Umeed Logo"
                 className="w-10 h-10 object-contain"
               />
