@@ -45,9 +45,11 @@ export default function Registration() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-slate-800">Register New Member</h1>
-      <p className="text-slate-600">New member will be added under your referral. Parent will be auto-assigned.</p>
-      <div className="bg-white rounded-xl shadow-soft border border-slate-200/80 p-6 max-w-xl">
+      <div className="page-card p-5">
+        <h1 className="text-2xl font-bold text-slate-800">Register New Member</h1>
+        <p className="text-slate-600 mt-1">New member will be added under your referral. Parent will be auto-assigned.</p>
+      </div>
+      <div className="page-card p-6 max-w-xl">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Full Name *</label>

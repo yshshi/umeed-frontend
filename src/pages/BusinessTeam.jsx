@@ -139,12 +139,14 @@ export default function BusinessTeam() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-slate-800">Team</h1>
-      <p className="text-slate-600">Your referral tree. Click a member to expand and load their referrals (unlimited levels).</p>
+      <div className="page-card p-5">
+        <h1 className="text-2xl font-bold text-slate-800">Team</h1>
+        <p className="text-slate-600 mt-1">Your referral tree. Click a member to expand and load their referrals (unlimited levels).</p>
+      </div>
 
       {tree && (
         <div className="space-y-3">
-          <div className="flex flex-col sm:flex-row gap-2">
+          <div className="page-card p-4 flex flex-col sm:flex-row gap-2">
             <label htmlFor="team-search-member-id" className="sr-only">Search by Member ID</label>
             <input
               id="team-search-member-id"
@@ -165,7 +167,7 @@ export default function BusinessTeam() {
             )}
           </div>
           {searchMemberId.trim() && (
-            <div className="rounded-lg border border-slate-200 bg-white p-3">
+            <div className="page-card p-4">
               {searchLoading ? (
                 <p className="text-slate-500 text-sm flex items-center gap-2">
                   <span className="inline-block w-4 h-4 border-2 border-primary-500 border-t-transparent rounded-full animate-spin" />
@@ -202,7 +204,7 @@ export default function BusinessTeam() {
           <LoadingSpinner className="h-10 w-10" />
         </div>
       ) : !tree ? (
-        <div className="rounded-xl border border-slate-200 bg-white p-8 text-center">
+        <div className="page-card p-8 text-center">
           <p className="text-slate-600 mb-4">Unable to load team or you are not signed in.</p>
           <Link to="/" className="text-primary-600 font-medium hover:underline">Go to Dashboard</Link>
         </div>

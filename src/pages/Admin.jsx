@@ -94,28 +94,30 @@ export default function Admin() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-slate-800">Admin</h1>
+      <div className="page-card p-5">
+        <h1 className="text-2xl font-bold text-slate-800">Admin</h1>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-white rounded-xl shadow-soft border border-slate-200/80 p-5">
+        <div className="page-card-hover p-5">
           <p className="text-sm text-slate-500">Total Users</p>
           <p className="text-2xl font-bold text-primary-600">{stats?.totalUsers ?? 0}</p>
         </div>
-        <div className="bg-white rounded-xl shadow-soft border border-slate-200/80 p-5">
+        <div className="page-card-hover p-5">
           <p className="text-sm text-slate-500">Active Users</p>
           <p className="text-2xl font-bold text-emerald-600">{stats?.activeUsers ?? 0}</p>
         </div>
-        <div className="bg-white rounded-xl shadow-soft border border-slate-200/80 p-5">
+        <div className="page-card-hover p-5">
           <p className="text-sm text-slate-500">Total Commission (Platform)</p>
           <p className="text-2xl font-bold text-slate-800">{formatCurrency(stats?.totalCommission)}</p>
         </div>
       </div>
 
-      <div className="bg-white rounded-xl shadow-soft border border-slate-200/80 overflow-hidden">
+      <div className="page-card overflow-hidden">
         <h2 className="px-4 py-3 text-lg font-semibold text-slate-800 border-b border-slate-200">All Users</h2>
         <div className="overflow-x-auto max-h-[60vh] overflow-y-auto">
           <table className="w-full">
-            <thead className="bg-slate-50 border-b border-slate-200 sticky top-0">
+            <thead className="bg-gradient-to-r from-primary-50 to-indigo-50 border-b border-slate-200 sticky top-0">
               <tr>
                 <th className="text-left px-4 py-3 text-sm font-semibold text-slate-700">Member ID</th>
                 <th className="text-left px-4 py-3 text-sm font-semibold text-slate-700">Name</th>

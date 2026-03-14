@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { useToast } from '../context/ToastContext';
+import api from '../services/api';
 
 import { BUSINESS_TYPES, BUSINESS_TYPE_SELECTABLE } from '../utils/constants';
 
 export default function Register() {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const refFromUrl = searchParams.get('ref') || '';
   const [referralCode, setReferralCode] = useState(refFromUrl);
   const [name, setName] = useState('');
@@ -15,7 +16,6 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [businessType, setBusinessType] = useState(BUSINESS_TYPE_SELECTABLE);
   const [loading, setLoading] = useState(false);
-  const { register } = useAuth();
   const { addToast } = useToast();
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function Register() {
     }
     setLoading(true);
     try {
-      await register({
+      const { data } = await api.post('/auth/register', {
         name: name.trim(),
         email: email.trim().toLowerCase(),
         mobile: mobile.trim(),
@@ -43,6 +43,13 @@ export default function Register() {
         referralCode: referralCode.trim() || undefined,
       });
       addToast('Registration successful');
+      navigate('/registration-success', {
+        state: {
+          name: data.user?.name || name.trim(),
+          memberId: data.user?.memberId,
+          password,
+        },
+      });
     } catch (err) {
       addToast(err.response?.data?.message || 'Registration failed', 'error');
     } finally {
@@ -51,9 +58,9 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-white to-indigo-50 p-4 py-8">
+    <div className="min-h-screen flex items-center justify-center p-4 py-8 bg-gradient-to-br from-cyan-400 via-teal-300 to-emerald-400">
       <div className="w-full max-w-md">
-        <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-soft border border-slate-200/80 p-8">
+        <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-white/50 p-8">
           <h1 className="text-2xl font-bold text-primary-800 text-center mb-2">Create Account</h1>
           <p className="text-slate-600 text-center text-sm mb-6">Join Umeed</p>
           <form onSubmit={handleSubmit} className="space-y-4">

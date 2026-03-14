@@ -28,15 +28,15 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-white to-indigo-50 p-4">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-indigo-400 via-purple-300 to-pink-300">
       <div className="w-full max-w-md">
-        <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-soft border border-slate-200/80 p-8">
+        <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-white/50 p-8">
           <div className="p-4 border-b border-slate-200">
             <div className="flex items-center justify-center">
 
               {/* Logo */}
               <img
-                 src="./logo.jpeg"
+                 src="../../images/logo.jpeg"
                 alt="Umeed Logo"
                 className="w-10 h-10 object-contain"
               />

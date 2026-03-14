@@ -64,10 +64,12 @@ export default function Profile() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-slate-800">Profile</h1>
+      <div className="page-card p-5">
+        <h1 className="text-2xl font-bold text-slate-800">Profile</h1>
+      </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="bg-white rounded-xl shadow-soft border border-slate-200/80 p-6">
+        <div className="page-card p-6">
           <h2 className="text-lg font-semibold text-slate-800 mb-4">Personal Details</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -95,7 +97,7 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-soft border border-slate-200/80 p-6">
+        <div className="page-card p-6">
           <h2 className="text-lg font-semibold text-slate-800 mb-4">Address</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {['street', 'city', 'state', 'pincode', 'country'].map((f) => (
@@ -112,7 +114,7 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-soft border border-slate-200/80 p-6">
+        <div className="page-card p-6">
           <h2 className="text-lg font-semibold text-slate-800 mb-4">Family Details</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -163,7 +165,7 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-soft border border-slate-200/80 p-6">
+        <div className="page-card p-6">
           <h2 className="text-lg font-semibold text-slate-800 mb-4">Deposit & Amount (read-only)</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -205,7 +207,7 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-soft border border-slate-200/80 p-6">
+        <div className="page-card p-6">
           <h2 className="text-lg font-semibold text-slate-800 mb-4">Bank Details</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {['accountHolderName', 'bankName', 'accountNumber', 'ifscCode', 'branch'].map((f) => (

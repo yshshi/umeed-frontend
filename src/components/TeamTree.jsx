@@ -51,7 +51,7 @@ function TreeNode({
           className={`flex-1 min-w-0 flex items-center gap-3 rounded-lg border text-left transition touch-manipulation ${
             isRoot
               ? 'bg-primary-50 border-primary-200 p-4 cursor-default'
-              : 'bg-white border-slate-200 p-3 hover:border-primary-300 hover:shadow-soft active:bg-slate-50'
+              : 'bg-white/95 border-white/80 p-3 hover:border-primary-300 hover:shadow-md active:bg-slate-50'
           } ${isLoading ? 'opacity-70' : ''} ${isHighlighted ? 'ring-2 ring-primary-500 ring-offset-2' : ''}`}
         >
           {canExpand && (
@@ -114,9 +114,9 @@ export default function TeamTree({
   const rootDeposit = tree.deposit != null ? tree.deposit : tree.walletBalance;
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-slate-50/50 p-4 space-y-2">
+    <div className="page-card p-4 space-y-2">
       {/* Root (current user) - always visible */}
-      <div className="rounded-lg border border-primary-200 bg-primary-50 p-4 flex flex-wrap items-center gap-x-3 gap-y-1">
+      <div className="rounded-xl border border-primary-200/80 bg-gradient-to-r from-primary-50 to-indigo-50 p-4 flex flex-wrap items-center gap-x-3 gap-y-1">
         <span className="font-semibold text-primary-700">{tree.memberId}</span>
         <span className="text-slate-700">{tree.name}</span>
         <span className="text-emerald-600 font-medium">{formatCurrency(rootDeposit)}</span>
@@ -142,7 +142,7 @@ export default function TeamTree({
           ))}
         </div>
       ) : (
-        <div className="rounded-lg border border-slate-200 bg-white p-8 text-center mt-2">
+        <div className="page-card p-8 text-center mt-2">
           <p className="text-slate-500 mb-2">You have no direct referrals yet.</p>
           <p className="text-sm text-slate-400 mb-4">Register new members from the Registration page to grow your team.</p>
           <Link to="/registration" className="inline-block px-4 py-2 rounded-lg bg-primary-600 text-white text-sm font-medium hover:bg-primary-700 transition">
