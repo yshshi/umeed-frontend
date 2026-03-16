@@ -43,7 +43,7 @@ export default function DashboardLayout() {
 
               {/* Logo */}
               <img
-                 src="./logo.jpeg"
+                 src="/logo.jpeg"
                 alt="Umeed Logo"
                 className="w-10 h-10 object-contain"
               />

@@ -16,7 +16,7 @@ export default function QrPay() {
       </div>
       <div className="page-card p-6 max-w-md flex flex-col items-center">
          <img
-            src="./qr.jpeg"
+            src="/qr.jpeg"
             alt="Payment QR Code"
             className="w-full max-w-sm h-auto rounded-lg border border-slate-200 shadow-sm object-contain bg-white"
             onError={() => setImageError(true)}
