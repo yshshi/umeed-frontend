@@ -15,7 +15,13 @@ export default function QrPay() {
         <p className="text-slate-600 mt-1">Scan the QR code below to make your payment.</p>
       </div>
       <div className="page-card p-6 max-w-md flex flex-col items-center">
-        {!imageError ? (
+         <img
+            src="./qr.jpeg"
+            alt="Payment QR Code"
+            className="w-full max-w-sm h-auto rounded-lg border border-slate-200 shadow-sm object-contain bg-white"
+            onError={() => setImageError(true)}
+          />
+        {/* {!imageError ? (
           <img
             src="./qr.jpeg"
             alt="Payment QR Code"
@@ -28,7 +34,7 @@ export default function QrPay() {
             <p className="font-medium">QR image not found.</p>
             <p className="mt-1">Add your image at <code className="bg-slate-200 px-1 rounded">frontend/public/qr-pay.png</code> (static, no upload).</p>
           </div>
-        ) : null}
+        ) : null} */}
       </div>
     </div>
   );
