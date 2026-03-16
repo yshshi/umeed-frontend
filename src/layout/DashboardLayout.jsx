@@ -3,18 +3,18 @@ import { Outlet, NavLink, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const navItems = [
-  { to: '/', label: 'Dashboard' },
-  { to: '/profile', label: 'Profile' },
+  { to: '/dashboard', label: 'Dashboard' },
+  { to: '/dashboard/profile', label: 'Profile' },
   {
     label: 'Business',
     children: [
-      { to: '/business/self', label: 'Self' },
-      { to: '/business/team', label: 'Team' },
+      { to: '/dashboard/business/self', label: 'Self' },
+      { to: '/dashboard/business/team', label: 'Team' },
     ],
   },
-  { to: '/registration', label: 'Registration' },
-  { to: '/commission', label: 'Commission' },
-  { to: '/wallet', label: 'Wallet' },
+  { to: '/dashboard/registration', label: 'Registration' },
+  { to: '/dashboard/commission', label: 'Commission' },
+  { to: '/dashboard/wallet', label: 'Wallet' },
 ];
 
 export default function DashboardLayout() {
@@ -42,7 +42,7 @@ export default function DashboardLayout() {
 
               {/* Logo */}
               <img
-                 src="./logo.jpeg"
+                 src="../../images/logo.jpeg"
                 alt="Umeed Logo"
                 className="w-10 h-10 object-contain"
               />
@@ -116,7 +116,7 @@ export default function DashboardLayout() {
             )}
             {isAdmin && (
               <NavLink
-                to="/admin"
+                to="/dashboard/admin"
                 className={({ isActive }) =>
                   `flex items-center px-3 py-2.5 rounded-lg transition mt-2 border-t border-slate-200 pt-2 ${
                     isActive ? 'bg-amber-100 text-amber-800' : 'text-slate-600 hover:bg-amber-50'
@@ -154,7 +154,7 @@ export default function DashboardLayout() {
             </svg>
           </button>
           <div className="flex-1" />
-          <Link to="/">
+          <Link to="/dashboard">
             <span className="text-sm text-slate-600 hover:text-primary-600 cursor-pointer transition">
               {user?.name}
             </span>

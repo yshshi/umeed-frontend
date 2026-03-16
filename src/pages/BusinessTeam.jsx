@@ -206,7 +206,7 @@ export default function BusinessTeam() {
       ) : !tree ? (
         <div className="page-card p-8 text-center">
           <p className="text-slate-600 mb-4">Unable to load team or you are not signed in.</p>
-          <Link to="/" className="text-primary-600 font-medium hover:underline">Go to Dashboard</Link>
+          <Link to="/dashboard" className="text-primary-600 font-medium hover:underline">Go to Dashboard</Link>
         </div>
       ) : (
         <>
