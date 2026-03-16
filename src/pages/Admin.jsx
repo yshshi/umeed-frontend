@@ -13,6 +13,7 @@ export default function Admin() {
   const [totalAmountUserId, setTotalAmountUserId] = useState(null);
   const [totalAmountVal, setTotalAmountVal] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [roleUserId, setRoleUserId] = useState(null);
   const { addToast } = useToast();
 
   const fetchData = async () => {
@@ -84,6 +85,20 @@ export default function Admin() {
     }
   };
 
+  const updateRole = async (userId, newRole) => {
+    setSubmitting(true);
+    try {
+      await api.put(`/admin/users/${userId}/role`, { role: newRole });
+      addToast(newRole === 'admin' ? 'User is now an admin. They will have admin access after next login or refresh.' : 'Role updated to member.');
+      setRoleUserId(null);
+      fetchData();
+    } catch (err) {
+      addToast(err.response?.data?.message || 'Failed', 'error');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center py-12">
@@ -126,6 +141,7 @@ export default function Admin() {
                 <th className="text-left px-4 py-3 text-sm font-semibold text-slate-700">Total Deposit</th>
                 <th className="text-left px-4 py-3 text-sm font-semibold text-slate-700">Total Amount</th>
                 <th className="text-left px-4 py-3 text-sm font-semibold text-slate-700">Registered</th>
+                <th className="text-left px-4 py-3 text-sm font-semibold text-slate-700">Role</th>
                 <th className="text-left px-4 py-3 text-sm font-semibold text-slate-700">Status</th>
                 <th className="text-left px-4 py-3 text-sm font-semibold text-slate-700">Actions</th>
               </tr>
@@ -178,6 +194,20 @@ export default function Admin() {
                     )}
                   </td>
                   <td className="px-4 py-3 text-sm">{formatDate(u.registrationDate)}</td>
+                  <td className="px-4 py-3 text-sm">
+                    <span className={`inline-flex px-2 py-0.5 rounded text-xs font-medium ${u.role === 'admin' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-700'}`}>
+                      {u.role === 'admin' ? 'Admin' : 'Member'}
+                    </span>
+                    {roleUserId === u._id ? (
+                      <div className="flex items-center gap-1 mt-1">
+                        <button type="button" onClick={() => updateRole(u._id, 'admin')} disabled={submitting || u.role === 'admin'} className="text-xs px-2 py-1 bg-amber-600 text-white rounded">Make Admin</button>
+                        <button type="button" onClick={() => updateRole(u._id, 'user')} disabled={submitting || u.role === 'user'} className="text-xs px-2 py-1 bg-slate-600 text-white rounded">Make Member</button>
+                        <button type="button" onClick={() => setRoleUserId(null)} className="text-xs text-slate-500">Cancel</button>
+                      </div>
+                    ) : (
+                      <button type="button" onClick={() => setRoleUserId(u._id)} className="text-xs text-primary-600 hover:underline ml-1">Change role</button>
+                    )}
+                  </td>
                   <td className="px-4 py-3">
                     <span className={`inline-flex px-2 py-0.5 rounded text-xs font-medium ${u.isActive ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'}`}>
                       {u.isActive ? 'Active' : 'Inactive'}

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import api from '../services/api';
+import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { BUSINESS_TYPES, BUSINESS_TYPE_SELECTABLE } from '../utils/constants';
 
 export default function Registration() {
+  const { user } = useAuth();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [mobile, setMobile] = useState('');
@@ -11,6 +13,8 @@ export default function Registration() {
   const [businessType, setBusinessType] = useState(BUSINESS_TYPE_SELECTABLE);
   const [loading, setLoading] = useState(false);
   const { addToast } = useToast();
+
+  const canAddReferral = user?.isActive !== false;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +35,7 @@ export default function Registration() {
         password,
         businessType: businessType.trim(),
       });
-      addToast('Member registered successfully. Commission will be processed.');
+      addToast('Member registered successfully.');
       setName('');
       setEmail('');
       setMobile('');
@@ -48,6 +52,11 @@ export default function Registration() {
       <div className="page-card p-5">
         <h1 className="text-2xl font-bold text-slate-800">Register New Member</h1>
         <p className="text-slate-600 mt-1">New member will be added under your referral. Parent will be auto-assigned.</p>
+        {!canAddReferral && (
+          <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm">
+            Your account must be activated by an admin before you can add referrals. Contact admin to activate your account.
+          </div>
+        )}
       </div>
       <div className="page-card p-6 max-w-xl">
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -106,10 +115,10 @@ export default function Registration() {
           </div>
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || !canAddReferral}
             className="w-full py-3 rounded-lg bg-primary-600 text-white font-medium hover:bg-primary-700 disabled:opacity-60 transition"
           >
-            {loading ? 'Registering...' : 'Register Member'}
+            {loading ? 'Registering...' : !canAddReferral ? 'Activation required to add referrals' : 'Register Member'}
           </button>
         </form>
       </div>

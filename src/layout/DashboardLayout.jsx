@@ -15,6 +15,7 @@ const navItems = [
   { to: '/dashboard/registration', label: 'Registration' },
   { to: '/dashboard/commission', label: 'Commission' },
   { to: '/dashboard/wallet', label: 'Wallet' },
+  { to: '/dashboard/qr-pay', label: 'Pay via QR' },
 ];
 
 export default function DashboardLayout() {
@@ -42,7 +43,7 @@ export default function DashboardLayout() {
 
               {/* Logo */}
               <img
-                 src="../../images/logo.jpeg"
+                 src="./logo.jpeg"
                 alt="Umeed Logo"
                 className="w-10 h-10 object-contain"
               />

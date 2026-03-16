@@ -13,6 +13,7 @@ import BusinessTeam from './pages/BusinessTeam';
 import Registration from './pages/Registration';
 import Commission from './pages/Commission';
 import Wallet from './pages/Wallet';
+import QrPay from './pages/QrPay';
 import Admin from './pages/Admin';
 
 import DashboardLayout from './layout/DashboardLayout';
@@ -66,6 +67,7 @@ export default function App() {
         <Route path="registration" element={<Registration />} />
         <Route path="commission" element={<Commission />} />
         <Route path="wallet" element={<Wallet />} />
+        <Route path="qr-pay" element={<QrPay />} />
         <Route
           path="admin"
           element={
