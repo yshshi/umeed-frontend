@@ -220,7 +220,7 @@ export default function Landing() {
                 <a href="#mission" className="text-gray-600 hover:text-emerald-600 transition-colors font-medium">Mission</a>
                 <a href="#projects" className="text-gray-600 hover:text-emerald-600 transition-colors font-medium">Projects</a>
                 <Link to="/login">
-                  <button className="btn-primary text-white px-6 py-2 rounded-full font-semibold">Join Us</button>
+                  <button className="btn-primary text-white px-6 py-2 rounded-full font-semibold">Login/Registration</button>
                 </Link>
               </div>
               <button id="mobile-menu-btn" type="button" className="md:hidden text-gray-600" aria-label="Menu">
@@ -238,7 +238,7 @@ export default function Landing() {
                 <a href="#projects" className="block text-gray-600 hover:text-emerald-600 font-medium">Projects</a>
                 <Link to="/login">
                   <button type="button" className="w-full btn-primary text-white px-6 py-2 rounded-full font-semibold">
-                    Join Us
+                    Login/Registration
                   </button>
                 </Link>
               </div>
@@ -344,7 +344,7 @@ export default function Landing() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll visible" style={{ animationDelay: '1s' }}>
             <Link to="/login">
               <button type="button" className="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg animate-pulse-glow">
-                🤝 Join the Mission
+                🤝 Login/Registration
               </button>
             </Link>
             <button
@@ -690,7 +690,7 @@ export default function Landing() {
                 <li><a href="#impact" className="text-gray-400 hover:text-emerald-400 transition-colors">Our Impact</a></li>
                 <li><a href="#mission" className="text-gray-400 hover:text-emerald-400 transition-colors">Mission</a></li>
                 <li><a href="#projects" className="text-gray-400 hover:text-emerald-400 transition-colors">Projects</a></li>
-                <li><Link to="/login" className="text-gray-400 hover:text-emerald-400 transition-colors">Join Us</Link></li>
+                <li><Link to="/login" className="text-gray-400 hover:text-emerald-400 transition-colors">Login/Registration</Link></li>
               </ul>
             </div>
             <div>
